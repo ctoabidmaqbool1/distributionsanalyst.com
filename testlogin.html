@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Sign-In Demo</title>
+  <meta name="google-signin-client_id" content="">
+  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+
+</head>
+<body>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+         data-client_id="641266854031-gkupn33pju9ac2383pdgvej81hekr3an.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+
+    <script>
+        function handleCredentialResponse(response) {
+        // decodeJwtResponse() is a custom function defined by you
+        // to decode the credential response.
+        const responsePayload = jwt_decode(response.credential);
+
+        var email = responsePayload.email;   
+        var name = responsePayload.name;
+        var image = responsePayload.picture;
+
+        document.getElementById("user-name").innerHTML = name;
+        document.getElementById("user-email").innerHTML = email;
+        document.getElementById("user-image").src = image;
+
+        // console.log(responsePayload);
+
+        // console.log("ID: " + responsePayload.sub);
+        // console.log('Full Name: ' + responsePayload.name);
+        // console.log('Given Name: ' + responsePayload.given_name);
+        // console.log('Family Name: ' + responsePayload.family_name);
+        // console.log("Image URL: " + responsePayload.picture);
+        // console.log("Email: " + responsePayload.email);
+
+    }
+
+
+    //   function onSignIn(googleUser) {
+    //     var profile = googleUser.getBasicProfile();
+    //     var id_token = googleUser.getAuthResponse().id_token;
+    //     var email = profile.getEmail();   
+    //     var name = profile.getName();
+    //     var image = profile.getImageUrl();
+    //     var id = profile.getId();
+  
+    //     console.log("sdf" +id_token);
+  
+    //     // Send the ID token to your server for verification and user authentication.
+    //     // Example using jQuery:
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "/api/google-login",
+    //       data: { id_token: id_token },
+    //       success: function(response) {
+    //         // Handle successful login response from server.
+    //         console.log(response);
+    //       },
+    //       error: function(xhr, status, error) {
+    //         // Handle error response from server.
+    //         console.error(error);
+    //       }
+    //     });
+  
+    //     // Display user information on the page.
+    //     $('#user-name').text(name);
+    //     $('#user-email').text(email);
+    //     $('#user-image').attr('src', image);
+    //   }
+    </script>
+
+
+  <h1>Google Sign-In Demo</h1>
+  <hr>
+  <h2>User Information:</h2>
+  <p>Name: <span id="user-name"></span></p>
+  <p>Email: <span id="user-email"></span></p>
+  <img id="user-image" alt="User Image">
+</body>
+</html>

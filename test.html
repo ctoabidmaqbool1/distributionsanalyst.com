@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <div id="g_id_onload"
+         data-client_id="234234234234234234234534534523-23423423423423.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+
+    <script>
+        function handleCredentialResponse(response) {
+            // decodeJwtResponse() is a custom function defined by you
+            // to decode the credential response.
+            const responsePayload = jwt_decode(response.credential);
+            var email = responsePayload.email;   
+            var name = responsePayload.name;
+            var image = responsePayload.picture;
+            document.getElementById("user-name").innerHTML = name;
+            document.getElementById("user-email").innerHTML = email;
+            document.getElementById("user-image").src = image;
+            hguhjgh
+        }
+    </script>
+</body>
+</html>

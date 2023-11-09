@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Facebook Login Example</title>
+	<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+</head>
+<body>
+	<h1>Facebook Login Example</h1>
+	<p>Please login with your Facebook account:</p>
+	<fb:login-button 
+        scope="public_profile,email" 
+        onlogin="checkLoginState();">
+    </fb:login-button>
+
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '911373653328699',
+				cookie     : true,
+				xfbml      : true,
+				version    : 'v12.0'
+			});
+		};
+
+		function checkLoginState() {
+
+			
+			document.getElementById("name").innerHTML = "Hello World!";
+        	document.getElementById("connact").innerHTML = "abc@gmail.com";
+        	document.getElementById("img").src = "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80";
+
+
+			FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					var accessToken = response.authResponse.accessToken;
+					getUserData(accessToken);
+				} else {
+					console.log('User is not authorized.');
+				}
+			});
+		}
+
+		function getUserData(accessToken) {
+			// Make a request to your API with the accessToken
+			// Example: $.get('/api/user', {access_token: accessToken}, function(data) {});
+			console.log('User data retrieved successfully.');
+		}
+	</script>
+
+	<p>Profile Name: <span id="name"></span></p>
+	<p>Email/Phone No:  <span id="connact"></span> </p>
+	<img id="img"> </img>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "short_name": "DistributionsAnalyst",
+    "name": "Distributions Analyst (POS)",
+    "icons": [
+      {
+        "src": "images/logo1.png",
+        "type": "images/png",
+        "sizes": "192x192"
+      },
+       {
+        "src": "images/logo2.png",
+        "type": "images/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/?source=pwa",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#3367D6"
+  }

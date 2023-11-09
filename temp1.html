@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Login Page</h1>
+
+    <script>
+      function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+   
+        if (response.status === 'connected') {
+         testAPI();
+        } else if (response.status === 'not_authorized') {
+         document.getElementById('status').innerHTML = 'Login with Facebook ';
+        } else {
+         document.getElementById('status').innerHTML = 'Login with Facebook ';
+        }
+      }
+   
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+         statusChangeCallback(response);
+        });
+      }
+   
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '911373653328699',
+          cookie     : true,  
+          xfbml      : true, 
+          version    : 'v2.2'
+        });
+   
+        FB.getLoginStatus(function(response) {
+         statusChangeCallback(response);
+        });
+      };
+   
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+   
+   
+     function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me?fields=name,email', function(response) {
+        console.log('Successful login for: ' + response.name);
+        console.log('Successful login for: ' + response.email);
+   
+        document.getElementById("status").innerHTML = '<p>Welcome '+response.name+'! <a href=fblogincontroller.jsp?user_name='+ response.name.replace(" ", "_") +'&user_email='+ response.email +'>Continue with facebook login</a></p>'
+        });
+      }
+   
+      function logout() {
+        FB.logout(function(response) {
+         console.log('Successful logout!');
+        });
+      }
+    </script>
+   
+   
+    <br><br>
+   
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    <button onclick="javascript:logout();">Logout from Facebook</button>
+    <fb:login-button autologoutlink="true"></fb:login-button>
+    <button onclick="checkLoginState();">Login</button>
+    
+    <div id="status"></div>
+   
+    <script type="text/javascript">
+   
+    // var user_name=(String)request.getParameter("user_name");
+    // var user_email=(String)request.getParameter("user_email");
+   
+    // console.log("user: " + user_name);
+    //  console.log("email: "+ user_email);
+   
+    </script>
+   
+    
+  
+
+
+
+
+
+
+
+    
+</body>
+</html>

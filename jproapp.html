@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Tokrii | Biggest online Marketplace</title>
+        <link href="https://estore.esaleanalyst.com/layout/image/pos.png" rel="icon">
+
+        <link rel="manifest" href="https://estore.esaleanalyst.com/manifest.json">
+        <link rel="apple-touch-icon" href="https://estore.esaleanalyst.com/layout/image/pos.png">
+        <meta name="theme-color" content="#014473">
+
+        <meta charset="UTF-8">
+        <meta name="description" content="Tokrii is biggest online marketplace. Now buy everything online, your favorite physical business is online at Torkii e.g. Marts, Medical & Pharmacies, General & Cosmetic shops, Fruits & Vegetable shops, Mobile & Computer shops and Building material suppliers etc.">
+        <meta name="keywords" content="tokrii.pk, tokrii, online shopping, buy online, online marts, online medical and pharmacies, online general and cosmetic shops, online fruits and vegetable shops, online mobile and computer shops, online building material suppliers">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://estore.esaleanalyst.com/jpro/css/jpro.css">
+        <script src="https://estore.esaleanalyst.com/jpro/js/jpro.js" type="text/javascript"></script>
+        
+        <style>
+            body {
+                overflow-x: hidden; /* Hide horizontal scrollbar */
+            }
+        </style>
+
+          <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+    </head>
+
+    <body>
+        <div>
+            <jpro-app href="wss://estore.esaleanalyst.com/app/ws/tokrii" fxContextMenu="false" fullscreen="true" nativeScrolling="true" snapshot="auto" userSelect="true"></jpro-app>
+        </div>
+
+        <script>
+            // Register service worker to control making site work offline
+
+            window.onload = () => {
+            'use strict';
+
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker
+                    .register('./sw.js')
+                    .then(() => { console.log('Service Worker Registered'); });
+                }
+            }
+
+            // Code to handle install prompt on desktop
+
+            let deferredPrompt;
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                // Prevent Chrome 67 and earlier from automatically showing the prompt
+                e.preventDefault();
+                // Stash the event so it can be triggered later.
+                deferredPrompt = e;
+            });
+        </script>
+    </body>
+
+</html>

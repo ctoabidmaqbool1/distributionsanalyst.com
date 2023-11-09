@@ -1,0 +1,85 @@
+
+ /* body {
+     font-family: Rubik;
+} */
+ .display-1 {
+     /* font-family: 'Rubik', sans-serif; */
+     font-size: 4.25rem;
+     font-display: swap;
+}
+ .display-4 {
+     /* font-family: 'Rubik', sans-serif; */
+     font-size: 1rem;
+     font-display: swap;
+}
+ .display-5 {
+     /* font-family: 'Rubik', sans-serif; */
+     font-size: 1.5rem;
+     font-display: swap;
+}
+/* ---- Fluid typography for mobile devices ---- */
+/* 1.4 - font scale ratio ( bootstrap == 1.42857 ) */
+/* 100vw - current viewport width */
+/* (48 - 20) 48 == 48rem == 768px, 20 == 20rem == 320px(minimal supported viewport) */
+/* 0.65 - min scale variable, may vary */
+ @media (max-width: 768px) {
+     .display-1 {
+         font-size: 3.4rem;
+         font-size: calc( 2.1374999999999997rem + (4.25 - 2.1374999999999997) * ((100vw - 20rem) / (48 - 20)));
+         line-height: calc( 1.4 * (2.1374999999999997rem + (4.25 - 2.1374999999999997) * ((100vw - 20rem) / (48 - 20))));
+    }
+     .display-4 {
+         font-size: 0.8rem;
+         font-size: calc( 1rem + (1 - 1) * ((100vw - 20rem) / (48 - 20)));
+         line-height: calc( 1.4 * (1rem + (1 - 1) * ((100vw - 20rem) / (48 - 20))));
+    }
+}
+
+/* Buttons */
+/* .btn {
+     padding: 1rem 3rem;
+     border-radius: 3px;
+}*/
+ .btn-md {
+     padding: 1rem 3rem;
+     border-radius: 3px;
+}
+ .btn-white-outline, .btn-white-outline:active {
+     background: none;
+     border-color: #ffffff;
+     color: #ffffff;
+}
+ .btn-white-outline:hover, .btn-white-outline:focus {
+     color: #333333;
+     background-color: #ffffff;
+     border-color: #ffffff;
+}
+ .mbr-section-btn a.btn:not(.btn-form) {
+     border-radius: 100px;
+}
+ .mbr-section-btn a.btn:not(.btn-form):hover, .mbr-section-btn a.btn:not(.btn-form):focus {
+     box-shadow: none;
+}
+ .mbr-section-btn a.btn:not(.btn-form):hover, .mbr-section-btn a.btn:not(.btn-form):focus {
+     box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
+     -webkit-box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
+}
+/* a, a:hover {
+     color: #149dcc;
+}*/
+/* Scroll to top button*/
+/* Forms */
+ @media (max-width: 767px) {
+     .btn {
+         font-size: .75rem;
+    }
+}
+/* Footer */
+/* Headers*/
+ .cid-rRwsf5n42E {
+     background-image: url("images/cover.webp");
+}
+/* body {
+    font-family: Rubik;
+} */
+ 
